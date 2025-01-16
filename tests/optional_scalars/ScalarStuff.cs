@@ -7,16 +7,17 @@ namespace optional_scalars
 
 using global::System;
 using global::System.Collections.Generic;
-using global::FlatBuffers;
+using global::Google.FlatBuffers;
 
 public struct ScalarStuff : IFlatbufferObject
 {
   private Table __p;
   public ByteBuffer ByteBuffer { get { return __p.bb; } }
-  public static void ValidateVersion() { FlatBufferConstants.FLATBUFFERS_1_12_0(); }
+  public static void ValidateVersion() { FlatBufferConstants.FLATBUFFERS_24_12_23(); }
   public static ScalarStuff GetRootAsScalarStuff(ByteBuffer _bb) { return GetRootAsScalarStuff(_bb, new ScalarStuff()); }
   public static ScalarStuff GetRootAsScalarStuff(ByteBuffer _bb, ScalarStuff obj) { return (obj.__assign(_bb.GetInt(_bb.Position) + _bb.Position, _bb)); }
   public static bool ScalarStuffBufferHasIdentifier(ByteBuffer _bb) { return Table.__has_identifier(_bb, "NULL"); }
+  public static bool VerifyScalarStuff(ByteBuffer _bb) {Google.FlatBuffers.Verifier verifier = new Google.FlatBuffers.Verifier(_bb); return verifier.VerifyBuffer("NULL", false, ScalarStuffVerify.Verify); }
   public void __init(int _i, ByteBuffer _bb) { __p = new Table(_i, _bb); }
   public ScalarStuff __assign(int _i, ByteBuffer _bb) { __init(_i, _bb); return this; }
 
@@ -169,7 +170,7 @@ public struct ScalarStuff : IFlatbufferObject
   public static void AddMaybeBool(FlatBufferBuilder builder, bool? maybeBool) { builder.AddBool(31, maybeBool); }
   public static void AddDefaultBool(FlatBufferBuilder builder, bool defaultBool) { builder.AddBool(32, defaultBool, true); }
   public static void AddJustEnum(FlatBufferBuilder builder, optional_scalars.OptionalByte justEnum) { builder.AddSbyte(33, (sbyte)justEnum, 0); }
-  public static void AddMaybeEnum(FlatBufferBuilder builder, optional_scalars.OptionalByte? maybeEnum) { builder.AddSbyte(34, (sbyte)maybeEnum); }
+  public static void AddMaybeEnum(FlatBufferBuilder builder, optional_scalars.OptionalByte? maybeEnum) { builder.AddSbyte(34, (sbyte?)maybeEnum); }
   public static void AddDefaultEnum(FlatBufferBuilder builder, optional_scalars.OptionalByte defaultEnum) { builder.AddSbyte(35, (sbyte)defaultEnum, 1); }
   public static Offset<optional_scalars.ScalarStuff> EndScalarStuff(FlatBufferBuilder builder) {
     int o = builder.EndTable();
@@ -177,7 +178,223 @@ public struct ScalarStuff : IFlatbufferObject
   }
   public static void FinishScalarStuffBuffer(FlatBufferBuilder builder, Offset<optional_scalars.ScalarStuff> offset) { builder.Finish(offset.Value, "NULL"); }
   public static void FinishSizePrefixedScalarStuffBuffer(FlatBufferBuilder builder, Offset<optional_scalars.ScalarStuff> offset) { builder.FinishSizePrefixed(offset.Value, "NULL"); }
-};
+  public ScalarStuffT UnPack() {
+    var _o = new ScalarStuffT();
+    this.UnPackTo(_o);
+    return _o;
+  }
+  public void UnPackTo(ScalarStuffT _o) {
+    _o.JustI8 = this.JustI8;
+    _o.MaybeI8 = this.MaybeI8;
+    _o.DefaultI8 = this.DefaultI8;
+    _o.JustU8 = this.JustU8;
+    _o.MaybeU8 = this.MaybeU8;
+    _o.DefaultU8 = this.DefaultU8;
+    _o.JustI16 = this.JustI16;
+    _o.MaybeI16 = this.MaybeI16;
+    _o.DefaultI16 = this.DefaultI16;
+    _o.JustU16 = this.JustU16;
+    _o.MaybeU16 = this.MaybeU16;
+    _o.DefaultU16 = this.DefaultU16;
+    _o.JustI32 = this.JustI32;
+    _o.MaybeI32 = this.MaybeI32;
+    _o.DefaultI32 = this.DefaultI32;
+    _o.JustU32 = this.JustU32;
+    _o.MaybeU32 = this.MaybeU32;
+    _o.DefaultU32 = this.DefaultU32;
+    _o.JustI64 = this.JustI64;
+    _o.MaybeI64 = this.MaybeI64;
+    _o.DefaultI64 = this.DefaultI64;
+    _o.JustU64 = this.JustU64;
+    _o.MaybeU64 = this.MaybeU64;
+    _o.DefaultU64 = this.DefaultU64;
+    _o.JustF32 = this.JustF32;
+    _o.MaybeF32 = this.MaybeF32;
+    _o.DefaultF32 = this.DefaultF32;
+    _o.JustF64 = this.JustF64;
+    _o.MaybeF64 = this.MaybeF64;
+    _o.DefaultF64 = this.DefaultF64;
+    _o.JustBool = this.JustBool;
+    _o.MaybeBool = this.MaybeBool;
+    _o.DefaultBool = this.DefaultBool;
+    _o.JustEnum = this.JustEnum;
+    _o.MaybeEnum = this.MaybeEnum;
+    _o.DefaultEnum = this.DefaultEnum;
+  }
+  public static Offset<optional_scalars.ScalarStuff> Pack(FlatBufferBuilder builder, ScalarStuffT _o) {
+    if (_o == null) return default(Offset<optional_scalars.ScalarStuff>);
+    return CreateScalarStuff(
+      builder,
+      _o.JustI8,
+      _o.MaybeI8,
+      _o.DefaultI8,
+      _o.JustU8,
+      _o.MaybeU8,
+      _o.DefaultU8,
+      _o.JustI16,
+      _o.MaybeI16,
+      _o.DefaultI16,
+      _o.JustU16,
+      _o.MaybeU16,
+      _o.DefaultU16,
+      _o.JustI32,
+      _o.MaybeI32,
+      _o.DefaultI32,
+      _o.JustU32,
+      _o.MaybeU32,
+      _o.DefaultU32,
+      _o.JustI64,
+      _o.MaybeI64,
+      _o.DefaultI64,
+      _o.JustU64,
+      _o.MaybeU64,
+      _o.DefaultU64,
+      _o.JustF32,
+      _o.MaybeF32,
+      _o.DefaultF32,
+      _o.JustF64,
+      _o.MaybeF64,
+      _o.DefaultF64,
+      _o.JustBool,
+      _o.MaybeBool,
+      _o.DefaultBool,
+      _o.JustEnum,
+      _o.MaybeEnum,
+      _o.DefaultEnum);
+  }
+}
 
+public class ScalarStuffT
+{
+  public sbyte JustI8 { get; set; }
+  public sbyte? MaybeI8 { get; set; }
+  public sbyte DefaultI8 { get; set; }
+  public byte JustU8 { get; set; }
+  public byte? MaybeU8 { get; set; }
+  public byte DefaultU8 { get; set; }
+  public short JustI16 { get; set; }
+  public short? MaybeI16 { get; set; }
+  public short DefaultI16 { get; set; }
+  public ushort JustU16 { get; set; }
+  public ushort? MaybeU16 { get; set; }
+  public ushort DefaultU16 { get; set; }
+  public int JustI32 { get; set; }
+  public int? MaybeI32 { get; set; }
+  public int DefaultI32 { get; set; }
+  public uint JustU32 { get; set; }
+  public uint? MaybeU32 { get; set; }
+  public uint DefaultU32 { get; set; }
+  public long JustI64 { get; set; }
+  public long? MaybeI64 { get; set; }
+  public long DefaultI64 { get; set; }
+  public ulong JustU64 { get; set; }
+  public ulong? MaybeU64 { get; set; }
+  public ulong DefaultU64 { get; set; }
+  public float JustF32 { get; set; }
+  public float? MaybeF32 { get; set; }
+  public float DefaultF32 { get; set; }
+  public double JustF64 { get; set; }
+  public double? MaybeF64 { get; set; }
+  public double DefaultF64 { get; set; }
+  public bool JustBool { get; set; }
+  public bool? MaybeBool { get; set; }
+  public bool DefaultBool { get; set; }
+  public optional_scalars.OptionalByte JustEnum { get; set; }
+  public optional_scalars.OptionalByte? MaybeEnum { get; set; }
+  public optional_scalars.OptionalByte DefaultEnum { get; set; }
+
+  public ScalarStuffT() {
+    this.JustI8 = 0;
+    this.MaybeI8 = null;
+    this.DefaultI8 = 42;
+    this.JustU8 = 0;
+    this.MaybeU8 = null;
+    this.DefaultU8 = 42;
+    this.JustI16 = 0;
+    this.MaybeI16 = null;
+    this.DefaultI16 = 42;
+    this.JustU16 = 0;
+    this.MaybeU16 = null;
+    this.DefaultU16 = 42;
+    this.JustI32 = 0;
+    this.MaybeI32 = null;
+    this.DefaultI32 = 42;
+    this.JustU32 = 0;
+    this.MaybeU32 = null;
+    this.DefaultU32 = 42;
+    this.JustI64 = 0;
+    this.MaybeI64 = null;
+    this.DefaultI64 = 42;
+    this.JustU64 = 0;
+    this.MaybeU64 = null;
+    this.DefaultU64 = 42;
+    this.JustF32 = 0.0f;
+    this.MaybeF32 = null;
+    this.DefaultF32 = 42.0f;
+    this.JustF64 = 0.0;
+    this.MaybeF64 = null;
+    this.DefaultF64 = 42.0;
+    this.JustBool = false;
+    this.MaybeBool = null;
+    this.DefaultBool = true;
+    this.JustEnum = optional_scalars.OptionalByte.None;
+    this.MaybeEnum = null;
+    this.DefaultEnum = optional_scalars.OptionalByte.One;
+  }
+  public static ScalarStuffT DeserializeFromBinary(byte[] fbBuffer) {
+    return ScalarStuff.GetRootAsScalarStuff(new ByteBuffer(fbBuffer)).UnPack();
+  }
+  public byte[] SerializeToBinary() {
+    var fbb = new FlatBufferBuilder(0x10000);
+    ScalarStuff.FinishScalarStuffBuffer(fbb, ScalarStuff.Pack(fbb, this));
+    return fbb.DataBuffer.ToSizedArray();
+  }
+}
+
+
+static public class ScalarStuffVerify
+{
+  static public bool Verify(Google.FlatBuffers.Verifier verifier, uint tablePos)
+  {
+    return verifier.VerifyTableStart(tablePos)
+      && verifier.VerifyField(tablePos, 4 /*JustI8*/, 1 /*sbyte*/, 1, false)
+      && verifier.VerifyField(tablePos, 6 /*MaybeI8*/, 1 /*sbyte*/, 1, false)
+      && verifier.VerifyField(tablePos, 8 /*DefaultI8*/, 1 /*sbyte*/, 1, false)
+      && verifier.VerifyField(tablePos, 10 /*JustU8*/, 1 /*byte*/, 1, false)
+      && verifier.VerifyField(tablePos, 12 /*MaybeU8*/, 1 /*byte*/, 1, false)
+      && verifier.VerifyField(tablePos, 14 /*DefaultU8*/, 1 /*byte*/, 1, false)
+      && verifier.VerifyField(tablePos, 16 /*JustI16*/, 2 /*short*/, 2, false)
+      && verifier.VerifyField(tablePos, 18 /*MaybeI16*/, 2 /*short*/, 2, false)
+      && verifier.VerifyField(tablePos, 20 /*DefaultI16*/, 2 /*short*/, 2, false)
+      && verifier.VerifyField(tablePos, 22 /*JustU16*/, 2 /*ushort*/, 2, false)
+      && verifier.VerifyField(tablePos, 24 /*MaybeU16*/, 2 /*ushort*/, 2, false)
+      && verifier.VerifyField(tablePos, 26 /*DefaultU16*/, 2 /*ushort*/, 2, false)
+      && verifier.VerifyField(tablePos, 28 /*JustI32*/, 4 /*int*/, 4, false)
+      && verifier.VerifyField(tablePos, 30 /*MaybeI32*/, 4 /*int*/, 4, false)
+      && verifier.VerifyField(tablePos, 32 /*DefaultI32*/, 4 /*int*/, 4, false)
+      && verifier.VerifyField(tablePos, 34 /*JustU32*/, 4 /*uint*/, 4, false)
+      && verifier.VerifyField(tablePos, 36 /*MaybeU32*/, 4 /*uint*/, 4, false)
+      && verifier.VerifyField(tablePos, 38 /*DefaultU32*/, 4 /*uint*/, 4, false)
+      && verifier.VerifyField(tablePos, 40 /*JustI64*/, 8 /*long*/, 8, false)
+      && verifier.VerifyField(tablePos, 42 /*MaybeI64*/, 8 /*long*/, 8, false)
+      && verifier.VerifyField(tablePos, 44 /*DefaultI64*/, 8 /*long*/, 8, false)
+      && verifier.VerifyField(tablePos, 46 /*JustU64*/, 8 /*ulong*/, 8, false)
+      && verifier.VerifyField(tablePos, 48 /*MaybeU64*/, 8 /*ulong*/, 8, false)
+      && verifier.VerifyField(tablePos, 50 /*DefaultU64*/, 8 /*ulong*/, 8, false)
+      && verifier.VerifyField(tablePos, 52 /*JustF32*/, 4 /*float*/, 4, false)
+      && verifier.VerifyField(tablePos, 54 /*MaybeF32*/, 4 /*float*/, 4, false)
+      && verifier.VerifyField(tablePos, 56 /*DefaultF32*/, 4 /*float*/, 4, false)
+      && verifier.VerifyField(tablePos, 58 /*JustF64*/, 8 /*double*/, 8, false)
+      && verifier.VerifyField(tablePos, 60 /*MaybeF64*/, 8 /*double*/, 8, false)
+      && verifier.VerifyField(tablePos, 62 /*DefaultF64*/, 8 /*double*/, 8, false)
+      && verifier.VerifyField(tablePos, 64 /*JustBool*/, 1 /*bool*/, 1, false)
+      && verifier.VerifyField(tablePos, 66 /*MaybeBool*/, 1 /*bool*/, 1, false)
+      && verifier.VerifyField(tablePos, 68 /*DefaultBool*/, 1 /*bool*/, 1, false)
+      && verifier.VerifyField(tablePos, 70 /*JustEnum*/, 1 /*optional_scalars.OptionalByte*/, 1, false)
+      && verifier.VerifyField(tablePos, 72 /*MaybeEnum*/, 1 /*optional_scalars.OptionalByte*/, 1, false)
+      && verifier.VerifyField(tablePos, 74 /*DefaultEnum*/, 1 /*optional_scalars.OptionalByte*/, 1, false)
+      && verifier.VerifyTableEnd(tablePos);
+  }
+}
 
 }

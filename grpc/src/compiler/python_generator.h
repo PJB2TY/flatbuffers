@@ -19,22 +19,21 @@
 #ifndef GRPC_INTERNAL_COMPILER_PYTHON_GENERATOR_H
 #define GRPC_INTERNAL_COMPILER_PYTHON_GENERATOR_H
 
-#include <utility>
+#include <string>
 
-#include "src/compiler/schema_interface.h"
+#include "codegen/python.h"
+#include "flatbuffers/idl.h"
 
-namespace grpc_python_generator {
+namespace flatbuffers {
+namespace python {
+namespace grpc {
+bool Generate(const Parser &parser, const std::string &path,
+              const Version &version);
 
-// Data pertaining to configuration of the generator with respect to anything
-// that may be used internally at Google.
-struct GeneratorConfiguration {
-  grpc::string grpc_package_root;
-  // TODO(https://github.com/grpc/grpc/issues/8622): Drop this.
-  grpc::string beta_package_root;
-  // TODO(https://github.com/google/protobuf/issues/888): Drop this.
-  grpc::string import_prefix;
-};
-
-}  // namespace grpc_python_generator
+bool GenerateStub(const Parser &parser, const std::string &path,
+                  const Version &version);
+}  // namespace grpc
+}  // namespace python
+}  // namespace flatbuffers
 
 #endif  // GRPC_INTERNAL_COMPILER_PYTHON_GENERATOR_H
